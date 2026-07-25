@@ -38,6 +38,7 @@ rewards:
   amount-per-recipient: ${HILO_REWARD_AMOUNT:10}
   decimals: ${HILO_DECIMALS:18}
   max-recipients-per-reward: ${MAX_RECIPIENTS_PER_REWARD:50}
+  auto-process-interval-ms: ${AUTO_PROCESS_INTERVAL_MS:30000}
 
 # ═══════════════════════════════════════════
 # RATE LIMITING

@@ -2,15 +2,12 @@ package com.hilo.rewards.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -29,19 +26,14 @@ public class BlockchainService {
         this.wrapperAddress = wrapperAddress;
     }
 
-    public String processReward(String rewardId, List<String> recipients, BigDecimal amountPerRecipient) throws Exception {
-        BigInteger amountWei = amountPerRecipient.toBigInteger();
+    public String processReward(String rewardId, List<String> recipients, BigInteger amountPerRecipient) throws Exception {
+        String encodedFunction = encodeProcessReward(rewardId, recipients, amountPerRecipient);
 
-        // Encode function call: processReward(bytes32, address[], uint256)
-        String encodedFunction = encodeProcessReward(rewardId, recipients, amountWei);
-
-        // Get nonce
         BigInteger nonce = web3j.ethGetTransactionCount(
             credentials.getAddress(),
             DefaultBlockParameterName.LATEST
         ).send().getTransactionCount();
 
-        // Estimate gas
         BigInteger gasPrice = web3j.ethGasPrice().send().getGasPrice();
 
         org.web3j.protocol.core.methods.request.Transaction tx =
@@ -49,7 +41,7 @@ public class BlockchainService {
                 credentials.getAddress(),
                 nonce,
                 gasPrice,
-                BigInteger.valueOf(3_100_000), // gas limit
+                BigInteger.valueOf(3_100_000),
                 wrapperAddress,
                 encodedFunction
             );
@@ -77,12 +69,10 @@ public class BlockchainService {
         }
     }
 
-    public TransactionReceipt waitForReceipt(String txHash) throws Exception {
-        return web3j.ethGetTransactionReceipt(txHash)
-            .send()
-            .getResult();
-    }
-
+    /**
+     * Encode: processReward(bytes32 rewardId, address[] recipients, uint256 amountPerRecipient)
+     * Selector: 0x2b67b574
+     */
     private String encodeProcessReward(String rewardId, List<String> recipients, BigInteger amount) {
         String selector = "0x2b67b574";
 

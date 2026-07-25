@@ -69,7 +69,7 @@ class RewardServiceTest {
         when(repository.getProfile("user-1")).thenReturn(memberProfile1);
         when(repository.getProfile("user-2")).thenReturn(memberProfile2);
         when(blockchainService.getBalance()).thenReturn(BigInteger.valueOf(1_000_000_000_000_000_000L));
-        when(blockchainService.processReward(anyString(), anyList(), any(BigDecimal.class)))
+        when(blockchainService.processReward(anyString(), anyList(), any(BigInteger.class)))
             .thenReturn("0xabc123");
 
         RewardResponse response = rewardService.processReward(validRequest, "admin-user", "127.0.0.1");
@@ -80,7 +80,7 @@ class RewardServiceTest {
         assertEquals(2, response.recipients().size());
 
         verify(repository).saveReward(anyString(), eq(100L), eq("idem-abc-123"), isNull(), eq("processing"), any(BigDecimal.class));
-        verify(blockchainService).processReward(anyString(), anyList(), any(BigDecimal.class));
+        verify(blockchainService).processReward(anyString(), anyList(), any(BigInteger.class));
     }
 
     @Test
@@ -92,7 +92,7 @@ class RewardServiceTest {
             () -> rewardService.processReward(validRequest, "admin-user", "127.0.0.1"));
 
         assertEquals(ErrorCode.RATE_LIMITED, ex.getErrorCode());
-        verify(blockchainService, never()).processReward(anyString(), anyList(), any(BigDecimal.class));
+        verify(blockchainService, never()).processReward(anyString(), anyList(), any(BigInteger.class));
     }
 
     @Test
@@ -242,7 +242,7 @@ class RewardServiceTest {
         when(repository.getGroupMembers(100L)).thenReturn(List.of(approvedMember1));
         when(repository.getProfile("user-1")).thenReturn(memberProfile1);
         when(blockchainService.getBalance()).thenReturn(BigInteger.valueOf(1_000_000_000_000_000_000L));
-        when(blockchainService.processReward(anyString(), anyList(), any(BigDecimal.class)))
+        when(blockchainService.processReward(anyString(), anyList(), any(BigInteger.class)))
             .thenThrow(new RuntimeException("RPC error"));
 
         BusinessException ex = assertThrows(BusinessException.class,

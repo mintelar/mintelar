@@ -23,6 +23,7 @@ blockchain:
 rewards:
   amount-per-recipient: 10
   decimals: 18
+  auto-process-interval-ms: 30000
 
 rate-limit:
   max-requests: 5

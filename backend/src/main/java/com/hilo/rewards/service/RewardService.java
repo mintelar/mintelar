@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.web3j.crypto.Hash;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -43,8 +42,6 @@ public class RewardService {
         this.rateLimiter = rateLimiter;
         this.rewardAmount = rewardAmount;
         this.decimals = decimals;
-
-        // Derive address from private key
         this.signerAddress = "derived-from-key";
     }
 
@@ -66,7 +63,6 @@ public class RewardService {
         if (repository.isRewardProcessedOnChain(rewardId)) {
             log.info("Reward already processed on-chain: {}", rewardId);
             repository.saveAuditEvent(userId, "admin", "idempotent_hit", request.groupId(), rewardId, hashIp(ip));
-            // Return existing result (would need to fetch from DB)
             throw new BusinessException(ErrorCode.REWARD_ALREADY_EXISTS, requestId);
         }
 
@@ -126,7 +122,7 @@ public class RewardService {
 
         // ─── 9. Check ETH balance ──────────────────────
         BigInteger ethBalance = blockchainService.getBalance();
-        BigInteger minGas = BigInteger.valueOf(21000).multiply(BigInteger.valueOf(100_000_000_000L)); // ~0.0021 ETH
+        BigInteger minGas = BigInteger.valueOf(21000).multiply(BigInteger.valueOf(100_000_000_000L));
         if (ethBalance.compareTo(minGas) < 0) {
             repository.saveAuditEvent(userId, "admin", "insufficient_gas", request.groupId(), null, hashIp(ip));
             throw new BusinessException(ErrorCode.INSUFFICIENT_GAS, requestId);
@@ -141,7 +137,7 @@ public class RewardService {
         // ─── 11. Send blockchain transaction ───────────
         try {
             repository.saveRewardAttempt(rewardId, "transaction_sent", "submitted", null);
-            String txHash = blockchainService.processReward(rewardId, wallets, amountPerRecipient);
+            String txHash = blockchainService.processReward(rewardId, wallets, amountPerRecipient.toBigInteger());
             repository.saveReward(rewardId, request.groupId(), request.idempotencyKey(), txHash, "submitted", totalAmount);
 
             repository.saveAuditEvent(userId, "admin", "transaction_sent", request.groupId(), txHash, hashIp(ip));

@@ -176,13 +176,13 @@ class WalletValidationTest {
         when(repository.getProfile("user-1")).thenReturn(validProfile1);
         when(repository.getProfile("user-2")).thenReturn(validProfile2);
         when(blockchainService.getBalance()).thenReturn(BigInteger.valueOf(1_000_000_000_000_000_000L));
-        when(blockchainService.processReward(anyString(), anyList(), any(BigDecimal.class)))
+        when(blockchainService.processReward(anyString(), anyList(), any(BigInteger.class)))
             .thenReturn("0xdef456");
 
         RewardRequest request = new RewardRequest(100L, 1L, "idem-2");
         RewardResponse response = rewardService.processReward(request, "admin", "127.0.0.1");
 
         assertEquals("submitted", response.status());
-        verify(blockchainService).processReward(anyString(), anyList(), any(BigDecimal.class));
+        verify(blockchainService).processReward(anyString(), anyList(), any(BigInteger.class));
     }
 }

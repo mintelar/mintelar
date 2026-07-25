@@ -1,21 +1,22 @@
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\config\CorsConfig.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\config\SecurityConfig.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\config\Web3Config.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\controller\RewardController.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\exception\BusinessException.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\exception\ErrorCode.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\exception\ErrorResponse.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\exception\GlobalExceptionHandler.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\HiloRewardsApplication.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\Course.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\Group.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\GroupMember.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\Profile.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\RewardRequest.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\model\RewardResponse.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\repository\SupabaseRepository.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\security\AuthenticationFilter.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\security\JwtValidator.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\security\RateLimiter.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\service\BlockchainService.java
-C:\Users\Leti\Documents\Default Project\backend\src\main\java\com\hilo\rewards\service\RewardService.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\config\CorsConfig.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\config\SecurityConfig.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\config\Web3Config.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\controller\RewardController.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\exception\BusinessException.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\exception\ErrorCode.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\exception\ErrorResponse.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\exception\GlobalExceptionHandler.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\HiloRewardsApplication.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\Course.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\Group.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\GroupMember.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\Profile.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\RewardRequest.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\model\RewardResponse.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\repository\SupabaseRepository.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\security\AuthenticationFilter.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\security\JwtValidator.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\security\RateLimiter.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\service\BlockchainService.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\service\RewardAutoProcessor.java
+C:\Users\Leti\Documents\HiloProyect\backend\src\main\java\com\hilo\rewards\service\RewardService.java

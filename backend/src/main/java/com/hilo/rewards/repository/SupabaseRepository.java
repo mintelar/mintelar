@@ -135,6 +135,19 @@ public class SupabaseRepository {
         jdbcTemplate.update("UPDATE groups SET estado = ? WHERE id = ?", estado, groupId);
     }
 
+    public List<Group> getGroupsByEstado(String estado) {
+        return jdbcTemplate.query(
+            "SELECT id, name, course_id, estado FROM groups WHERE estado = ?",
+            (rs, rowNum) -> new Group(
+                rs.getLong("id"),
+                rs.getString("name"),
+                rs.getLong("course_id"),
+                rs.getString("estado")
+            ),
+            estado
+        );
+    }
+
     public void updateRewardStatus(String rewardId, String status) {
         jdbcTemplate.update("UPDATE rewards SET status = ?, updated_at = now() WHERE id = ?", status, UUID.fromString(rewardId));
     }
