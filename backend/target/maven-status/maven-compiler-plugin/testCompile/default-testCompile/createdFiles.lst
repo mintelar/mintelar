@@ -1,0 +1,3 @@
+com\hilo\rewards\security\JwtValidatorTest.class
+com\hilo\rewards\service\RewardServiceTest.class
+com\hilo\rewards\service\WalletValidationTest.class

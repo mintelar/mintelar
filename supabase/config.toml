@@ -1,0 +1,15 @@
+[project]
+id = "hilo-rewards"
+
+[db]
+port = 54322
+
+[studio]
+port = 54323
+
+[auth]
+enabled = true
+
+[api]
+enabled = true
+port = 54321

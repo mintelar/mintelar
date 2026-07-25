@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: false
+
+supabase:
+  url: https://test.supabase.co
+  anon-key: test-anon-key
+  jwt-issuer: https://test.supabase.co/auth/v1
+  jwks-uri: https://test.supabase.co/auth/v1/.well-known/jwks.json
+
+blockchain:
+  rpc-url: https://sepolia-rollup.arbitrum.io/rpc
+  chain-id: 421614
+  signer-private-key: 0x0000000000000000000000000000000000000000000000000000000000000001
+  wrapper-contract-address: 0x0000000000000000000000000000000000000001
+
+rewards:
+  amount-per-recipient: 10
+  decimals: 18
+
+rate-limit:
+  max-requests: 5
+  window-seconds: 900
+  max-group-requests: 10
+  group-window-seconds: 3600
+
+allowed-origins: http://localhost:3000
+
+logging:
+  level:
+    com.hilo.rewards: DEBUG

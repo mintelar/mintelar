@@ -1,0 +1,55 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${SUPABASE_DB_HOST:localhost}:${SUPABASE_DB_PORT:54322}/${SUPABASE_DB_NAME:postgres}
+    username: ${SUPABASE_DB_USER:postgres}
+    password: ${SUPABASE_DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+
+# ═══════════════════════════════════════════
+# SUPABASE
+# ═══════════════════════════════════════════
+supabase:
+  url: ${SUPABASE_URL}
+  anon-key: ${SUPABASE_ANON_KEY}
+  service-role-key: ${SUPABASE_SERVICE_ROLE_KEY}
+  jwt-issuer: ${SUPABASE_JWT_ISSUER:${SUPABASE_URL}/auth/v1}
+  jwks-uri: ${SUPABASE_JWKS_URI:${SUPABASE_URL}/auth/v1/.well-known/jwks.json}
+
+# ═══════════════════════════════════════════
+# BLOCKCHAIN
+# ═══════════════════════════════════════════
+blockchain:
+  rpc-url: ${ARBITRUM_SEPOLIA_RPC_URL:https://sepolia-rollup.arbitrum.io/rpc}
+  chain-id: ${CHAIN_ID:421614}
+  wrapper-address: ${HILO_WRAPPER_ADDRESS}
+  signer-private-key: ${HILO_BACKEND_SIGNER_PRIVATE_KEY}
+
+# ═══════════════════════════════════════════
+# REWARDS CONFIG
+# ═══════════════════════════════════════════
+rewards:
+  amount-per-recipient: ${HILO_REWARD_AMOUNT:10}
+  decimals: ${HILO_DECIMALS:18}
+  max-recipients-per-reward: ${MAX_RECIPIENTS_PER_REWARD:50}
+
+# ═══════════════════════════════════════════
+# RATE LIMITING
+# ═══════════════════════════════════════════
+rate-limit:
+  max-requests: ${RATE_LIMIT_REQUESTS:5}
+  window-seconds: ${RATE_LIMIT_WINDOW_SECONDS:900}
+  max-group-requests: ${RATE_LIMIT_GROUP_REQUESTS:10}
+  group-window-seconds: ${RATE_LIMIT_GROUP_WINDOW_SECONDS:3600}
+
+# ═══════════════════════════════════════════
+# CORS
+# ═══════════════════════════════════════════
+cors:
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
