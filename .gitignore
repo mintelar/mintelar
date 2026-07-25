@@ -1,0 +1,28 @@
+# Variables y secretos
+.env
+.env.*
+!.env.example
+
+# Supabase local y vínculo temporal
+supabase/.temp/
+.supabase/
+
+# Node
+node_modules/
+artifacts/
+cache/
+coverage/
+typechain-types/
+
+# Java
+backend/target/
+backend/src/main/resources/application-local.yml
+
+# IDE y sistema
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
